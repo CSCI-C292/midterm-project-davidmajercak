@@ -39,12 +39,15 @@ public class Grapple : MonoBehaviour
         }
         else if(_runtimeData.playerIsGrappling)
         {
+            //Probably need to use a configurable joint to set a hard min distance
+
             //If we're closer to the grapple point than we were when we started the grapple
             if(_distanceFromPoint > Vector3.Distance(_player.transform.position, _grapplePoint))
             {
                 //Update the maxDistance so that our SpringJoint doesn't let us get as far away again, allowing tighter grapples around objects
                 _distanceFromPoint = Vector3.Distance(_player.transform.position, _grapplePoint);
                 _joint.maxDistance = _distanceFromPoint * _jointMaxDistanceMultiplier;
+                _joint.minDistance = _distanceFromPoint * _jointMinDistanceMultiplier;
             }
         }
     }
