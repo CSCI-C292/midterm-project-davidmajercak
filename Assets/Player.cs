@@ -34,8 +34,6 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         _rb = GetComponent<Rigidbody>();
-        //Set maxAngularVelocity to 0, prevents player from being slightly tilted from collisions with objects due to grappling hook 
-        _rb.maxAngularVelocity = 0;
     }
     void Update()
     {
@@ -99,5 +97,11 @@ public class Player : MonoBehaviour
             //_rb.AddForce(_movementVector * 5, ForceMode.Acceleration);
         }
             
+    }
+
+    void OnCollisionEnter(Collision other) {
+        //This resets the x and z axes after a collision. The player was getting slightly off tilt even though x and z axis are frozen
+        //I think this is due to something in the SpringJoint physics
+        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
     }
 }
