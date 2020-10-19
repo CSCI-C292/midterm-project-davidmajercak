@@ -21,6 +21,11 @@ public class Grapple : MonoBehaviour
     SpringJoint _joint;
     [SerializeField] RuntimeData _runtimeData;
     float _distanceFromPoint;
+    float _lastDistanceFromPoint;
+    float _initialDistanceFromPoint;
+    bool _reachedMinDistance;
+    [SerializeField] float _AbsMinDistanceMultiplier; //Aboslute Min Distance multiplier on distance from grapple point. 
+                                                      //At this point the SpringJoint damper will be set to Infinity (grapple will no longer change size)
 
     void Awake()
     {
@@ -39,16 +44,24 @@ public class Grapple : MonoBehaviour
         }
         else if(_runtimeData.playerIsGrappling)
         {
-            //Probably need to use a configurable joint to set a hard min distance
-
+            if(_reachedMinDistance)
+                return;
+            //Maybe set player damper to a lower value while grappling to allow momentum to be transferred more easily?
+            if((_lastDistanceFromPoint < Vector3.Distance(_player.transform.position, _grapplePoint)) && 
+                (_initialDistanceFromPoint * _AbsMinDistanceMultiplier >= Vector3.Distance(_player.transform.position, _grapplePoint)))
+            {
+                _joint.damper = Mathf.Infinity;
+                _reachedMinDistance = true;
+            }
             //If we're closer to the grapple point than we were when we started the grapple
-            if(_distanceFromPoint > Vector3.Distance(_player.transform.position, _grapplePoint))
+            else if(_distanceFromPoint > Vector3.Distance(_player.transform.position, _grapplePoint))
             {
                 //Update the maxDistance so that our SpringJoint doesn't let us get as far away again, allowing tighter grapples around objects
                 _distanceFromPoint = Vector3.Distance(_player.transform.position, _grapplePoint);
                 _joint.maxDistance = _distanceFromPoint * _jointMaxDistanceMultiplier;
                 _joint.minDistance = _distanceFromPoint * _jointMinDistanceMultiplier;
             }
+            _lastDistanceFromPoint = _distanceFromPoint;
         }
     }
 
@@ -59,6 +72,7 @@ public class Grapple : MonoBehaviour
 
     void StartGrapple()
     {
+        _reachedMinDistance = false;
         RaycastHit hit;
         if(Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, _grappleDistance, _Grappleable))
         {
@@ -71,6 +85,10 @@ public class Grapple : MonoBehaviour
             _joint.connectedAnchor = _grapplePoint;
 
             _distanceFromPoint = Vector3.Distance(_player.transform.position, _grapplePoint);
+            _initialDistanceFromPoint = _distanceFromPoint;
+            _lastDistanceFromPoint = _distanceFromPoint;
+            
+
             _joint.maxDistance = _distanceFromPoint * _jointMaxDistanceMultiplier;
             _joint.minDistance = _distanceFromPoint * _jointMinDistanceMultiplier;
 
@@ -96,6 +114,7 @@ public class Grapple : MonoBehaviour
     void StopGrapple()
     {
         _runtimeData.playerIsGrappling = false;
+        _reachedMinDistance = false;
         _line.positionCount = 0;
         Destroy(_joint);
     }

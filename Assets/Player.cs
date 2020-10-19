@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     bool _isGrounded;
     [SerializeField] float _groundDistance = default;
     [SerializeField] RuntimeData _runtimeData;
+    [SerializeField] float _grappleMovementMultiplier;
 
     void Start()
     {
@@ -81,22 +82,15 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        //If grounded, use MovePosition
-        if(_isGrounded)
+        //If player isn't grappling the player can move
+        if(!_runtimeData.playerIsGrappling)
         {
             _rb.MovePosition(_rb.position + _movementVector);
         }
-
-        //TODO - Set a max value for player in a controls in a direction
-        //If player is in air, add acceleration to player in the direction of their _movementVector
-        //If _rb velocity in player desired direction is less than max player air movement, accelerate until it is while in air
-        //TODO - Also need to decide how to get velocity set properly in air.
         else
         {
-            _rb.MovePosition(_rb.position + _movementVector);
-            //_rb.AddForce(_movementVector * 5, ForceMode.Acceleration);
+            _rb.MovePosition(_rb.position + _movementVector * _grappleMovementMultiplier);
         }
-            
     }
 
     void OnCollisionEnter(Collision other) {
