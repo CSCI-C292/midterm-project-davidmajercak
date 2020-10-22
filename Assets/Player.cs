@@ -38,8 +38,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        //Resets x and y rotation, need to leave this in until I figure out the issue (probably with SpringJoint)
-        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+        
 
         //Checks if player is grounded using Ground LayerMask
         //QueryTriggerInteraction.Ignore causes this to ignore any triggers instead of counting as a collision
@@ -61,6 +60,12 @@ public class Player : MonoBehaviour
     {
         //Important to keep this in FixedUpdate
         Movement();
+    }
+
+    void LateUpdate() {
+        //Resets x and y rotation, need to leave this in until I figure out the issue (probably with SpringJoint)
+        //Moving this to LateUpdate has definitely reduced the weird camera movement when colliding with an object
+        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
     }
 
     void AimCamera()
