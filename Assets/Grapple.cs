@@ -34,7 +34,11 @@ public class Grapple : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        //This if statement only allows player to grapple when they press LMB while it is over an object
+        //if(Input.GetMouseButtonDown(0))
+        //This if statement allows player to grapple an object even if mouse is down before they mouse over an object
+        //This makes it so grappling is less dependent on twitch reflexes, maybe make this an option?
+        if(Input.GetMouseButton(0) && !_runtimeData.playerIsGrappling)
         {
             StartGrapple();
         }

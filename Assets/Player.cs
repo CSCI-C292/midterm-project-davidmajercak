@@ -8,8 +8,12 @@ using UnityEngine;
 //Look at this code and maybe see about grappling around objects?
 //https://www.raywenderlich.com/312-make-a-2d-grappling-hook-game-in-unity-part-2
 
-//Changed gravity to -13 from -9.81
-//Adjusted player mass from 1 to 1.4
+//Changed gravity to -20 from -9.81
+//Adjusted player mass from 1 to 2
+
+//Physics ideas:
+//Reduce player drag to 0 (or closer to 0) when grapple drag set to inifinity so they orbit around grapple point with more speed
+//Add a sliding mechanic when pressing shift to slide on ground (could make for interesting secions in levels)
 
 
 
@@ -38,8 +42,6 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        
-
         //Checks if player is grounded using Ground LayerMask
         //QueryTriggerInteraction.Ignore causes this to ignore any triggers instead of counting as a collision
         _isGrounded = Physics.CheckSphere(gameObject.transform.position, _groundDistance, _groundLayerMask, QueryTriggerInteraction.Ignore);
@@ -54,6 +56,8 @@ public class Player : MonoBehaviour
             _rb.AddForce(_jumpVector, ForceMode.VelocityChange);
         }
 
+        //The "speed" of the player.  Maybe show this somewhere on screen?
+        Debug.Log(_rb.velocity.magnitude);
     }
 
     void FixedUpdate()
