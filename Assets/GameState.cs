@@ -13,6 +13,9 @@ public class GameState : MonoBehaviour
         if (Input.GetKeyDown("r"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //Revert any timescale changes (fixes bug if player resets just after completing level)
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f;
         }
     }
 }
