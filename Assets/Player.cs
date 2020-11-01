@@ -58,18 +58,17 @@ public class Player : MonoBehaviour
 
         //The "speed" of the player.  Maybe show this somewhere on screen?
         //Debug.Log(_rb.velocity.magnitude);
+
+        //This fixes the bugs that were drviving me crazy!
+        //Needed to set center of mass of the rigid body otherwise grappling slightly rotates the player
+        _rb.centerOfMass = Vector3.zero;
+        _rb.inertiaTensorRotation = Quaternion.identity;
     }
 
     void FixedUpdate()
     {
         //Important to keep this in FixedUpdate
         Movement();
-    }
-
-    void LateUpdate() {
-        //Resets x and y rotation, need to leave this in until I figure out the issue (probably with SpringJoint)
-        //Moving this to LateUpdate has definitely reduced the weird camera movement when colliding with an object
-        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
     }
 
     void AimCamera()

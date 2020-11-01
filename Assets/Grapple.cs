@@ -31,8 +31,8 @@ public class Grapple : MonoBehaviour
     {
         _line = GetComponent<LineRenderer>();
         //Gets rid of annoying line that appears at start otherwise
-        _line.SetPosition(0, new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity));
-        _line.SetPosition(1,new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity));
+        _line.SetPosition(0, Vector3.up * -100);
+        _line.SetPosition(1, Vector3.up * -100);
     }
 
     void Update()
