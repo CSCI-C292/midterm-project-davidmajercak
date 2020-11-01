@@ -38,7 +38,7 @@ public class LevelGoal : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex == _lastLevel)
         {
             //Demo completion message
-            _levelCompleteTMP.text = "You beat the demo!\nStay tuned for more levels!";
+            _levelCompleteTMP.text = "You beat the demo!\nMore levels coming soon!";
             yield return new WaitForSeconds(3f);
             //Return CursorLockMode to normal
             Cursor.lockState = CursorLockMode.None;

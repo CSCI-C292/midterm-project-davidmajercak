@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        //Fixes issue where grapple gun keeps pointing at position from last scene if LMB held down
+        _runtimeData.playerIsGrappling = false;
 
         _rb = GetComponent<Rigidbody>();
     }
