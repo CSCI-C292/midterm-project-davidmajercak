@@ -213,7 +213,7 @@ MonoBehaviour:
   _jointMassScale: 4
   _Grappleable:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 256
   _grappleStartPoint: {fileID: 7901811471489769544}
   _player: {fileID: 7901811469769761338}
   _linePositionCount: 2

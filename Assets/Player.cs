@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         }
 
         //The "speed" of the player.  Maybe show this somewhere on screen?
-        Debug.Log(_rb.velocity.magnitude);
+        //Debug.Log(_rb.velocity.magnitude);
     }
 
     void FixedUpdate()

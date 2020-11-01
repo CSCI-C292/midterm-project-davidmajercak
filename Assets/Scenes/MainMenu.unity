@@ -2053,8 +2053,8 @@ MonoBehaviour:
   m_text: "David Majercak\naka extraDavid\ndavidmajercak.com\nextradavid.com\n\nDavid
     Majercak\n\nKenney.nl aka Asset Jesus\n\tSpace Kit\n\tPlatformer Kit\n\nTitle
     - maxstack\n\tThrough Space\nIn Game - HorrorPen\n\tIt Is\n\nTitle Background
-    - Adrien Olichon\nSkybox - Pulsar Bytes\n\tSpaceSkies Free\t\n\nChabane Maidi\nBrackeys\nTeam
-    Opal\nLya Mummert"
+    - Adrien Olichon\nSkybox - Pulsar Bytes\n\tSpaceSkies Free\t\nShaders - The Developer\n\tUltimate
+    10+ Shaders\n\nChabane Maidi\nBrackeys\nTeam Opal\nLya Mummert"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2554,6 +2554,8 @@ MonoBehaviour:
 
 
 
+
+
     Special Thanks'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2649,7 +2651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1735231257
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2874,7 +2876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1887031549
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3288,7 +3290,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
