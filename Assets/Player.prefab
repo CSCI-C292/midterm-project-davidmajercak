@@ -219,7 +219,7 @@ MonoBehaviour:
   _linePositionCount: 2
   _cam: {fileID: 7901811471661356320}
   _runtimeData: {fileID: 11400000, guid: bf458f0b775ca3648bfde24f876adaec, type: 2}
-  _AbsMinDistanceMultiplier: 0.7
+  _AbsMinDistanceMultiplier: 0.8
 --- !u!1 &7901811469769761338
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &7901811470675487377
 GameObject:
   m_ObjectHideFlags: 0
