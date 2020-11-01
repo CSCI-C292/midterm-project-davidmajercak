@@ -1151,7 +1151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -6}
+  m_AnchoredPosition: {x: 0, y: 21.651794}
   m_SizeDelta: {x: 402.80664, y: 66.28146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &586053614
@@ -1292,7 +1292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -204.851}
+  m_AnchoredPosition: {x: 0, y: -177.1992}
   m_SizeDelta: {x: 402.80664, y: 66.28146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &690898140
@@ -1422,7 +1422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -72.281006}
+  m_AnchoredPosition: {x: 0, y: -44.62921}
   m_SizeDelta: {x: 402.80664, y: 66.28146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &914863052
@@ -2267,7 +2267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217190498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 339.5191, y: 225.3482, z: -13.6875}
+  m_LocalPosition: {x: 339.5191, y: 253, z: -13.6875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2309,7 +2309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -138.56601}
+  m_AnchoredPosition: {x: 0, y: -110.914215}
   m_SizeDelta: {x: 402.80664, y: 66.28146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1320276108
@@ -3755,10 +3755,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Controls  - Move mouse to aim camera\nLeft click and hold to start grappling
-    \nRelease left click to stop grappling\nWASD to move \nSpace to jump (when on
-    ground)\n\nTips - You can move with WASD even when grappling,\n\tthis will help
-    you to grapple around objects.\nYou can build up momentum by grappling consecutively!"
+  m_text: "Controls  - Move mouse to aim camera\nLeft click and hold to start grappling\nRelease
+    left click to stop grappling\nWASD to move \nSpace to jump (when on ground)\nR
+    to reset the level\n\nGoal - Reach the blue portal to go to the next level!\n\nTips
+    - You can move with WASD even when grappling,\n\tthis will help you to grapple
+    around objects.\nYour grapple range is not infinite! You need to be within range.\nYou
+    can build up momentum by grappling consecutively!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4005,7 +4007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00024414, y: 60.281006}
+  m_AnchoredPosition: {x: 0.00024414, y: 87.9328}
   m_SizeDelta: {x: 402.80664, y: 66.28146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2088901729

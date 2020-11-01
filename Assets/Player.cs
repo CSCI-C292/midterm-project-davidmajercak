@@ -63,6 +63,9 @@ public class Player : MonoBehaviour
         //Needed to set center of mass of the rigid body otherwise grappling slightly rotates the player
         _rb.centerOfMass = Vector3.zero;
         _rb.inertiaTensorRotation = Quaternion.identity;
+
+        //Set player position in _runtimeData
+        _runtimeData.playerPosition = gameObject.transform.position;
     }
 
     void FixedUpdate()
