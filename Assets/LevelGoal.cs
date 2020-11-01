@@ -25,7 +25,6 @@ public class LevelGoal : MonoBehaviour
 
     IEnumerator LevelComplete()
     {
-        yield return new WaitForSeconds(3);
         //Wait for about 3 seconds after completing level
         yield return new WaitForSeconds(.3f);
         //Remove level completion text
