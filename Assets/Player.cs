@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     [SerializeField] float _groundDistance = default;
     [SerializeField] RuntimeData _runtimeData;
     [SerializeField] float _grappleMovementMultiplier;
+    [SerializeField] float _dragOnGround;
+    [SerializeField] float _dragInAir;
 
     void Start()
     {
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
         _runtimeData.playerIsGrappling = false;
 
         _rb = GetComponent<Rigidbody>();
+        _rb.maxAngularVelocity = 0;
     }
     void Update()
     {
@@ -50,6 +53,13 @@ public class Player : MonoBehaviour
 
         AimCamera();
         CalculateMovementVector();
+
+        //Setting drag on ground so player slides less
+        if(_isGrounded)
+            _rb.drag = _dragOnGround;
+        //Drag is air is less than on ground.  Better collisions with objects
+        else
+            _rb.drag = _dragInAir;  
 
         //Jump
         if(_isGrounded && Input.GetButtonDown("Jump"))
@@ -61,7 +71,7 @@ public class Player : MonoBehaviour
         //The "speed" of the player.  Maybe show this somewhere on screen?
         //Debug.Log(_rb.velocity.magnitude);
 
-        //This fixes the bugs that were drviving me crazy!
+        //This fixes the bugs that were driving me crazy!
         //Needed to set center of mass of the rigid body otherwise grappling slightly rotates the player
         _rb.centerOfMass = Vector3.zero;
         _rb.inertiaTensorRotation = Quaternion.identity;
@@ -112,6 +122,7 @@ public class Player : MonoBehaviour
     void OnCollisionEnter(Collision other) {
         //This resets the x and z axes after a collision. The player was getting slightly off tilt even though x and z axis are frozen
         //I think this is due to something in the SpringJoint physics
+        //Not sure if this is still needed but don't want to break anything before midterm submission
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
     }
 }

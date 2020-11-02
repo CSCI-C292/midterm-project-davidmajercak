@@ -2432,6 +2432,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7901811469769761337, guid: dfccbf00d8360104b92882b4bac466ec,
+        type: 3}
+      propertyPath: _dragOnGround
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901811469769761337, guid: dfccbf00d8360104b92882b4bac466ec,
+        type: 3}
+      propertyPath: _dragInAir
+      value: 0.22
+      objectReference: {fileID: 0}
     - target: {fileID: 7901811469769761338, guid: dfccbf00d8360104b92882b4bac466ec,
         type: 3}
       propertyPath: m_Name
