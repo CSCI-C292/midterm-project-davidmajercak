@@ -33,8 +33,6 @@ public class Player : MonoBehaviour
     [SerializeField] float _groundDistance = default;
     [SerializeField] RuntimeData _runtimeData;
     [SerializeField] float _grappleMovementMultiplier;
-    [SerializeField] float _dragOnGround;
-    [SerializeField] float _dragInAir;
 
     void Start()
     {
@@ -53,13 +51,6 @@ public class Player : MonoBehaviour
 
         AimCamera();
         CalculateMovementVector();
-
-        //Setting drag on ground so player slides less
-        if(_isGrounded)
-            _rb.drag = _dragOnGround;
-        //Drag is air is less than on ground.  Better collisions with objects
-        else
-            _rb.drag = _dragInAir;  
 
         //Jump
         if(_isGrounded && Input.GetButtonDown("Jump"))
