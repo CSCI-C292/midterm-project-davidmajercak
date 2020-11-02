@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 1 - Humble Beginnings.unity
     guid: 67e878ba8233cb948941eb1db3d7dc62
   - enabled: 1
-    path: Assets/Scenes/Level 2 - A Taste of Speed.unity
+    path: Assets/Scenes/Level 2 - The Alcove.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Level 3 - The Stairway.unity

@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7901811469769083497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.271, y: -0.173, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.17222, y: 0.17222, z: 0.4959075}
   m_Children:
   - {fileID: 7901811471489769544}
@@ -291,8 +291,6 @@ MonoBehaviour:
   _groundDistance: 0.85
   _runtimeData: {fileID: 11400000, guid: bf458f0b775ca3648bfde24f876adaec, type: 2}
   _grappleMovementMultiplier: 0.8
-  _dragOnGround: 0
-  _dragInAir: 0
 --- !u!54 &7901811469769761342
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -413,7 +411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7901811470679580927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.707, y: -0.416, z: 1.291}
+  m_LocalPosition: {x: 0.95, y: -0.45, z: 1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7901811469769083496}
