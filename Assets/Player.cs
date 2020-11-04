@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //https://www.youtube.com/watch?v=Xgh4v1w5DxU
-//Referenced this tutorial but improved the code quite a bit 
+//Referenced this tutorial for initial grapple implementation but improved the code quite a bit 
+
+//Didn't implement this code but might look at it when working on grappling mechanics in the future
 //https://www.raywenderlich.com/348-make-a-2d-grappling-hook-game-in-unity-part-1
 //Look at this code and maybe see about grappling around objects?
 //https://www.raywenderlich.com/312-make-a-2d-grappling-hook-game-in-unity-part-2
 
-//Changed gravity to -20 from -9.81
-//Adjusted player mass from 1 to 2
 
 //Physics ideas:
 //Reduce player drag to 0 (or closer to 0) when grapple drag set to inifinity so they orbit around grapple point with more speed
-//Add a sliding mechanic when pressing shift to slide on ground (could make for interesting secions in levels)
+//Reduce x and y drag only when in air?
+//Add a trick system. 360's and other stuff.  
+//  Keep track of Mathf.abs(currentRotation - lastRotation) since touching the ground?
+//  Maybe press shift to boost forward based on tricks?
+//Add a sliding mechanic when pressing shift(maybe different button) to slide on ground (could make for interesting secions in levels)
 
 
 
@@ -79,6 +83,7 @@ public class Player : MonoBehaviour
 
     void AimCamera()
     {
+        //Pretty basic 3D movement from the 3D tutorial lecture
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 

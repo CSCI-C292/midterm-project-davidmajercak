@@ -35,6 +35,8 @@ public class GameState : MonoBehaviour
         }
     }
 
+    //Checks the x, y, and z positions of every object in the scene to determine where the level bounds are
+    //  This way we can auto-reload the scene if the player goes too far out of bounds
     void CalculateLevelBounds(Scene scene, LoadSceneMode mode)
     {
         _lowestObjecty = Mathf.Infinity;
