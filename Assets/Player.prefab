@@ -59,6 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7901811469769083503
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -111,6 +113,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -281,16 +284,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3836e99b67f22da4086baddc8f75c3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensitivity: 4
+  _mouseSensitivity: 3
   _cam: {fileID: 7901811471661356322}
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  _movementSpeed: 15
+  _movementSpeed: 10
   _jumpHeight: 20
   _groundDistance: 0.85
   _runtimeData: {fileID: 11400000, guid: bf458f0b775ca3648bfde24f876adaec, type: 2}
-  _grappleMovementMultiplier: 0.8
+  _grappleMovementMultiplier: 1
 --- !u!54 &7901811469769761342
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -362,6 +365,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -386,6 +390,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7901811470679580927
 GameObject:
   m_ObjectHideFlags: 0
