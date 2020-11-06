@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Grapple Shader
-  m_Shader: {fileID: -6465566751694194690, guid: dd087871bcdc09d4b8b32b42d435490d,
+  m_Name: Grapple Material
+  m_Shader: {fileID: -6465566751694194690, guid: 4dd0d681c4d90484bbeb068b82a0d242,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -21,5 +21,6 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats: []
-    m_Colors: []
+    m_Colors:
+    - Color_566103E3: {r: 0, g: 42.72251, b: 31.74129, a: 0}
   m_BuildTextureStacks: []
