@@ -27,12 +27,15 @@ public class Grapple : MonoBehaviour
     [SerializeField] float _AbsMinDistanceMultiplier; //Aboslute Min Distance multiplier on distance from grapple point. 
                                                       //At this point the SpringJoint damper will be set to Infinity (grapple will no longer change size)
 
+    LineTextureMode _textureMode = LineTextureMode.Stretch;
+
     void Awake()
     {
         _line = GetComponent<LineRenderer>();
         //Gets rid of annoying line that appears at start otherwise
         _line.SetPosition(0, Vector3.up * -100);
         _line.SetPosition(1, Vector3.up * -100);
+        _line.textureMode = _textureMode;
     }
 
     void Update()
