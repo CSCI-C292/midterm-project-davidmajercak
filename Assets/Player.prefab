@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 47e27c64a003ef945aea74e04183a04e, type: 2}
+  - {fileID: 2100000, guid: 19d457a81c07b0a4fa0a0fefa3e37363, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -560,7 +560,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 2000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
