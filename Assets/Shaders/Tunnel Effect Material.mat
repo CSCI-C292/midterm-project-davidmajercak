@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Line Thing Test
+  m_Name: Tunnel Effect Material
   m_Shader: {fileID: -6465566751694194690, guid: 8186413a061a461409a400d364158b41,
     type: 3}
   m_ShaderKeywords: 
@@ -22,6 +22,6 @@ Material:
     m_TexEnvs: []
     m_Floats: []
     m_Colors:
-    - Color_ABFE9468: {r: 0, g: 8, b: 8, a: 0}
+    - Color_ABFE9468: {r: 0, g: 2.996078, b: 2.996078, a: 0}
     - Vector2_D84520E: {r: 4, g: 4, b: 0, a: 0}
   m_BuildTextureStacks: []
