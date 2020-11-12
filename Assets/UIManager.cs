@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
     {
         Instance = this;
 
-
         SceneManager.sceneLoaded += ResetLevelTimer;
         GameEvents.LevelCompleted += LevelCompleted;
     }
@@ -36,6 +35,7 @@ public class UIManager : MonoBehaviour
     {
         _isLevelCompleted = false;
         _crosshair = _crosshair.GetComponent<Image>();
+        _levelTimer = 0;
     }
 
 
