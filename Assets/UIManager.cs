@@ -26,6 +26,12 @@ public class UIManager : MonoBehaviour
         GameEvents.LevelCompleted += LevelCompleted;
     }
 
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= ResetLevelTimer;
+        GameEvents.LevelCompleted -= LevelCompleted;
+    }
+
     void Start()
     {
         _isLevelCompleted = false;
