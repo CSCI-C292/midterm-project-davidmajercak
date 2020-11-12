@@ -13,6 +13,8 @@ public class LevelGoal : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            GameEvents.InvokeLevelCompleted();
+
             _levelCompleteTMP = GameObject.FindGameObjectWithTag("LevelCompleteText").GetComponent<TextMeshProUGUI>();
             _levelCompleteText = SceneManager.GetActiveScene().name + "\nComplete!";
             _levelCompleteTMP.text = _levelCompleteText;
