@@ -13,13 +13,16 @@ public class LevelGoal : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            //Important to call this before event otherwise flashing text is delayed at first
+            //Slows down game after completing level
+            Time.timeScale = .1f;
+
             GameEvents.InvokeLevelCompleted();
 
             _levelCompleteTMP = GameObject.FindGameObjectWithTag("LevelCompleteText").GetComponent<TextMeshProUGUI>();
             _levelCompleteText = SceneManager.GetActiveScene().name + "\nComplete!";
             _levelCompleteTMP.text = _levelCompleteText;
-            //Slows down game after completing level
-            Time.timeScale = .1f;
+
             //Smooths out the slowing down of the game so it's not choppy
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
             StartCoroutine(LevelComplete());

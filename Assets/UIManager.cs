@@ -48,6 +48,19 @@ public class UIManager : MonoBehaviour
     void LevelCompleted(object sender, EventArgs args)
     {
         _isLevelCompleted = true;
+
+        StartCoroutine(FlashLevelTimerText());
+    }
+
+    IEnumerator FlashLevelTimerText()
+    {
+        while(_isLevelCompleted)
+        {
+            _levelTimerTMP.alpha = 0;
+            yield return new WaitForSeconds(.1f * Time.timeScale);
+            _levelTimerTMP.alpha = 255;
+            yield return new WaitForSeconds(.2f * Time.timeScale);
+        }
     }
 
 }
