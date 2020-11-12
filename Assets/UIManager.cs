@@ -2,20 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    float _levelTimer;
+    [SerializeField] TextMeshProUGUI _levelTimer;
+
 
     void Awake() 
     {
         Instance = this;
-        SceneManager.sceneLoaded += ResetLevelTimer;
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    void ResetLevelTimer(Scene scene, LoadSceneMode mode)
+    void Start()
     {
-        _levelTimer = 0;
+
+    }
+
+
+    void Update()
+    {
+        _levelTimer.text = Time.timeSinceLevelLoad.ToString("F2");
     }
 }
