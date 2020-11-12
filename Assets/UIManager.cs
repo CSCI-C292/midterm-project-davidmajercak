@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
@@ -9,14 +10,16 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     [SerializeField] TextMeshProUGUI _levelTimerTMP;
+    [SerializeField] Image _crosshair;
+    [SerializeField] Color _canGrappleColor;
+    [SerializeField] Color _cannotGrappleColor;
     float _levelTimer;
     bool _isLevelCompleted;
+    [SerializeField] RuntimeData _runtimeData;
 
     void Awake() 
     {
         Instance = this;
-        //Keep this object between scenes
-        DontDestroyOnLoad(this.gameObject);
         //Keep this object's parent (Canvas) in between scenes
         Canvas canvas = gameObject.GetComponentInParent<Canvas>();
         DontDestroyOnLoad(canvas);
@@ -28,11 +31,14 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _isLevelCompleted = false;
+        _crosshair = _crosshair.GetComponent<Image>();
     }
 
 
     void Update()
     {
+        SetCrosshairColor();
+
         //Only increment level time if level is not completed
         if(!_isLevelCompleted)
             _levelTimer += Time.deltaTime;
@@ -60,6 +66,18 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(.1f * Time.timeScale);
             _levelTimerTMP.alpha = 255;
             yield return new WaitForSeconds(.2f * Time.timeScale);
+        }
+    }
+
+    void SetCrosshairColor()
+    {
+        if(_runtimeData.canGrapple)
+        {
+            _crosshair.color = _canGrappleColor;
+        }
+        else
+        {
+            _crosshair.color = _cannotGrappleColor;
         }
     }
 

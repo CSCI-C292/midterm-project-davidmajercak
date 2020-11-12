@@ -28,6 +28,7 @@ public class Grapple : MonoBehaviour
                                                       //At this point the SpringJoint damper will be set to Infinity (grapple will no longer change size)
 
     LineTextureMode _textureMode = LineTextureMode.Stretch;
+    bool canGrapple;
 
     void Awake()
     {
@@ -38,8 +39,16 @@ public class Grapple : MonoBehaviour
         _line.textureMode = _textureMode;
     }
 
+    void Start()
+    {
+        canGrapple = false;
+    }
+
     void Update()
     {
+        SetCanGrapple();
+
+
         //This if statement allows player to grapple an object even if mouse is down before they mouse over an object
         //This makes it so grappling is less dependent on twitch reflexes
         if(Input.GetMouseButton(0) && !_runtimeData.playerIsGrappling)
@@ -126,5 +135,20 @@ public class Grapple : MonoBehaviour
         _reachedMinDistance = false;
         _line.positionCount = 0;
         Destroy(_joint);
+    }
+
+    void SetCanGrapple()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, _grappleDistance, _Grappleable))
+        {
+            canGrapple = true;
+        }
+        else
+        {
+            canGrapple = false;
+        }
+
+        _runtimeData.canGrapple = canGrapple;
     }
 }
