@@ -20,9 +20,7 @@ public class UIManager : MonoBehaviour
     void Awake() 
     {
         Instance = this;
-        //Keep this object's parent (Canvas) in between scenes
-        Canvas canvas = gameObject.GetComponentInParent<Canvas>();
-        DontDestroyOnLoad(canvas);
+
 
         SceneManager.sceneLoaded += ResetLevelTimer;
         GameEvents.LevelCompleted += LevelCompleted;
