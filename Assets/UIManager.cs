@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
         if (!Instance)
         {
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -99,9 +100,18 @@ public class UIManager : MonoBehaviour
     void DisplaySongInformation(object sender, EventArgs args)
     {
         _artistNameTMP.text = "TricksnTraps";
-        _songNameTMP.text = _runtimeData.songName;
+        _songNameTMP.text = _runtimeData.songName.Substring(0, _runtimeData.songName.IndexOf("("));
+        _artistNameTMP.alpha = 255;
+        _songNameTMP.alpha = 255;
 
-        Debug.Log(_runtimeData.songName);
+        StartCoroutine(SongInformationAlpha());
     }
 
+    IEnumerator SongInformationAlpha()
+    {
+        yield return new WaitForSeconds(2f * Time.timeScale);
+
+        _artistNameTMP.CrossFadeAlpha(0, 3, true);
+        _songNameTMP.CrossFadeAlpha(0, 3, true);
+    }
 }
