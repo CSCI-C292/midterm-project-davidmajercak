@@ -66,6 +66,8 @@ public class UIManager : MonoBehaviour
     {
         ResetLevelTimer();
 
+        _levelCompletedTMP.text = "";
+
         //These are to keep Song text on main menu but hide everything else (and to click through them)
         if(SceneManager.GetActiveScene().buildIndex == 0)
         {
