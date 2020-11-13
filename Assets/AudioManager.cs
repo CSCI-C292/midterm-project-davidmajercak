@@ -4,28 +4,52 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    AudioManager Instance;
+    static AudioManager Instance;
     AudioSource _audioSource;
     [SerializeField] AudioClip[] _trackList;
 
     void Awake()
     {
-        Instance = this;
-        _audioSource = GetComponent<AudioSource>();
-        DontDestroyOnLoad(gameObject);
+        if(!Instance)
+        {
+            Instance = this;
+            _audioSource = GetComponent<AudioSource>();
+            DontDestroyOnLoad(this.gameObject);
+            Random rng = new Random();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
     {
+        ShuffleSongs();
         StartCoroutine(PlayNextSong());
     }
 
     IEnumerator PlayNextSong()
     {
-        Debug.Log("music");
-        _audioSource.clip = _trackList[2];
-        _audioSource.Play();
-        yield return new WaitForSeconds(_trackList[2].length);
-        StartCoroutine(PlayNextSong());
+        for(int i = 0; i < _trackList.Length; i++)
+        {
+            _audioSource.clip = _trackList[i];
+            _audioSource.Play();
+            yield return new WaitForSeconds(_trackList[i].length);
+        }
+        
+        ShuffleSongs();
+        PlayNextSong();
+    }
+
+    void ShuffleSongs()
+    {
+        for (int t = 0; t < _trackList.Length; t++)
+        {
+            AudioClip tmp = _trackList[t];
+            int r = Random.Range(t, _trackList.Length);
+            _trackList[t] = _trackList[r];
+            _trackList[r] = tmp;
+        }
     }
 }
