@@ -124,6 +124,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3507066279300404522}
     m_Modifications:
+    - target: {fileID: 5324350928160487955, guid: 126ee21071501154d99ce4b4cfe98eba,
+        type: 3}
+      propertyPath: m_text
+      value: Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324350928873325849, guid: 126ee21071501154d99ce4b4cfe98eba,
+        type: 3}
+      propertyPath: m_AspectRatio
+      value: 1.781814
+      objectReference: {fileID: 0}
     - target: {fileID: 5324350928873325926, guid: 126ee21071501154d99ce4b4cfe98eba,
         type: 3}
       propertyPath: m_Name
