@@ -73,6 +73,7 @@ public class Grapple : MonoBehaviour
             {
                 _joint.damper = Mathf.Infinity;
                 _reachedMinDistance = true;
+                StartCoroutine(DamperInfinityTimer());
             }
             //If we're closer to the grapple point than we were when we started the grapple
             else if(_distanceFromPoint > Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position))
@@ -156,5 +157,16 @@ public class Grapple : MonoBehaviour
         }
 
         _runtimeData.canGrapple = canGrapple;
+    }
+
+    IEnumerator DamperInfinityTimer()
+    {
+        yield return new WaitForSeconds(.3f * Time.timeScale);
+
+        if(_joint)
+        {
+            _joint.damper = _jointDamper;
+            _reachedMinDistance = false;
+        }
     }
 }
