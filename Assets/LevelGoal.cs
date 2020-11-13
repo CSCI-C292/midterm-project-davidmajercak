@@ -49,6 +49,9 @@ public class LevelGoal : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             //Return to Main Menu
             SceneManager.LoadScene(0);
+            //TODO
+            //Need to reset the level completion text again before returning to main menu
+            _levelCompleteTMP.text = "";
         }
         //If level isn't the last level
         else

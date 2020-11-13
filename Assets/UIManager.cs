@@ -124,6 +124,9 @@ public class UIManager : MonoBehaviour
         //TricksnTraps is hard coded right now, probably need a scritpable object for songs later
         _artistNameTMP.text = "TricksnTraps";
         _songNameTMP.text = _runtimeData.songName.Substring(0, _runtimeData.songName.IndexOf("("));
+
+        _artistNameTMP.enabled = true;
+        _songNameTMP.enabled = true;
         _artistNameTMP.alpha = 255;
         _songNameTMP.alpha = 255;
 
@@ -135,7 +138,11 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f * Time.timeScale);
 
-        _artistNameTMP.CrossFadeAlpha(0, 3, true);
-        _songNameTMP.CrossFadeAlpha(0, 3, true);
+        _artistNameTMP.CrossFadeAlpha(.001f, 3, true);
+        _songNameTMP.CrossFadeAlpha(.001f, 3, true);
+
+        yield return new WaitForSeconds(3.1f * Time.timeScale);
+        _artistNameTMP.enabled = false;
+        _songNameTMP.enabled = false;
     }
 }
