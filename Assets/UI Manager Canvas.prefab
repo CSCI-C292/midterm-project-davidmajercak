@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelTimerTMP: {fileID: 777002922102115813}
+  _artistNameTMP: {fileID: 5619276207735092010}
+  _songNameTMP: {fileID: 3126916723096473896}
   _crosshair: {fileID: 576333882075871791}
   _canGrappleColor: {r: 1, g: 0, b: 0.8187933, a: 1}
   _cannotGrappleColor: {r: 0.31633854, g: 0, b: 1, a: 1}
@@ -124,6 +126,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3507066279300404522}
     m_Modifications:
+    - target: {fileID: 1654976740577156386, guid: 126ee21071501154d99ce4b4cfe98eba,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1847374582715421835, guid: 126ee21071501154d99ce4b4cfe98eba,
+        type: 3}
+      propertyPath: m_text
+      value: asd
+      objectReference: {fileID: 0}
     - target: {fileID: 5324350928160487955, guid: 126ee21071501154d99ce4b4cfe98eba,
         type: 3}
       propertyPath: m_text
@@ -274,5 +286,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5619276207735092010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1067407054547322076, guid: 126ee21071501154d99ce4b4cfe98eba,
+    type: 3}
+  m_PrefabInstance: {fileID: 4840134847291766774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3126916723096473896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7516110642180548318, guid: 126ee21071501154d99ce4b4cfe98eba,
+    type: 3}
+  m_PrefabInstance: {fileID: 4840134847291766774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

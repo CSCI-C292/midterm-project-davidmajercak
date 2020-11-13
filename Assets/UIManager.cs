@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     [SerializeField] TextMeshProUGUI _levelTimerTMP;
+    [SerializeField] TextMeshProUGUI _artistNameTMP;
+    [SerializeField] TextMeshProUGUI _songNameTMP;
     [SerializeField] Image _crosshair;
     [SerializeField] Color _canGrappleColor;
     [SerializeField] Color _cannotGrappleColor;
@@ -19,16 +21,25 @@ public class UIManager : MonoBehaviour
 
     void Awake() 
     {
-        Instance = this;
+        if (!Instance)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         SceneManager.sceneLoaded += ResetLevelTimer;
         GameEvents.LevelCompleted += LevelCompleted;
+        GameEvents.SongStarted += DisplaySongInformation;
     }
 
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= ResetLevelTimer;
         GameEvents.LevelCompleted -= LevelCompleted;
+        GameEvents.SongStarted -= DisplaySongInformation;
     }
 
     void Start()
@@ -83,6 +94,14 @@ public class UIManager : MonoBehaviour
         {
             _crosshair.color = _cannotGrappleColor;
         }
+    }
+
+    void DisplaySongInformation(object sender, EventArgs args)
+    {
+        _artistNameTMP.text = "TricksnTraps";
+        _songNameTMP.text = _runtimeData.songName;
+
+        Debug.Log(_runtimeData.songName);
     }
 
 }

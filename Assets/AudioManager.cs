@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     static AudioManager Instance;
     AudioSource _audioSource;
     [SerializeField] AudioClip[] _trackList;
+    [SerializeField] RuntimeData _runtimeData;
 
     void Awake()
     {
@@ -35,6 +36,10 @@ public class AudioManager : MonoBehaviour
         {
             _audioSource.clip = _trackList[i];
             _audioSource.Play();
+            
+            _runtimeData.songName = _trackList[i].ToString();
+            GameEvents.InvokeSongStarted();
+
             yield return new WaitForSeconds(_trackList[i].length);
         }
         
