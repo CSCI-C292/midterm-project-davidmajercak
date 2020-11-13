@@ -22,8 +22,10 @@ public class AudioManager : MonoBehaviour
 
     IEnumerator PlayNextSong()
     {
-        _audioSource.clip = _trackList[1];
-        yield return new WaitForSeconds(_trackList[1].length);
+        Debug.Log("music");
+        _audioSource.clip = _trackList[2];
+        _audioSource.Play();
+        yield return new WaitForSeconds(_trackList[2].length);
         StartCoroutine(PlayNextSong());
     }
 }

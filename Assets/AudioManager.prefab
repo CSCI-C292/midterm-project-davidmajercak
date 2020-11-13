@@ -44,6 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4109cf31269814a857efdb461e83b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trackList:
+  - {fileID: 8300000, guid: 7c8bd226068862241a5dbf1248c2b021, type: 3}
+  - {fileID: 8300000, guid: faa381e47a91bf242bed12a75b10962b, type: 3}
+  - {fileID: 8300000, guid: 10aa4bcf2f3d3454597170e7711f59e8, type: 3}
+  - {fileID: 8300000, guid: 2d9f06c77870fe14ab11cc3aa2cde04c, type: 3}
+  - {fileID: 8300000, guid: 4618d831ec4e67f4f95a00ba566f1bb7, type: 3}
+  - {fileID: 8300000, guid: 4e1cabb2fee802444ac392b7ebd38128, type: 3}
+  - {fileID: 8300000, guid: 53a204490ae97824282b0befa86612a3, type: 3}
+  - {fileID: 8300000, guid: e3556d71626c17e4a910fe6a6d1d654d, type: 3}
+  - {fileID: 8300000, guid: d1e3996302963434093c3eec5c495c5c, type: 3}
+  - {fileID: 8300000, guid: ce64004e481604b44a80e8df520effcf, type: 3}
+  - {fileID: 8300000, guid: 739fa88c94a719a48a66a431e979f157, type: 3}
+  - {fileID: 8300000, guid: d2b3873af98746a4db39ed3cd1c097db, type: 3}
 --- !u!82 &1647530646872085618
 AudioSource:
   m_ObjectHideFlags: 0
