@@ -24,6 +24,7 @@ public class Grapple : MonoBehaviour
     float _lastDistanceFromPoint;
     float _initialDistanceFromPoint;
     bool _reachedMinDistance;
+    GameObject _GrapplePointTracker;
     [SerializeField] float _AbsMinDistanceMultiplier; //Aboslute Min Distance multiplier on distance from grapple point. 
                                                       //At this point the SpringJoint damper will be set to Infinity (grapple will no longer change size)
 
@@ -42,10 +43,12 @@ public class Grapple : MonoBehaviour
     void Start()
     {
         canGrapple = false;
+        _GrapplePointTracker = new GameObject();
     }
 
     void Update()
     {
+        Debug.Log(_GrapplePointTracker.transform.position);
         SetCanGrapple();
 
 
@@ -94,6 +97,9 @@ public class Grapple : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, _grappleDistance, _Grappleable))
         {
+            _GrapplePointTracker = Instantiate(_GrapplePointTracker, hit.point, Quaternion.identity);
+            _GrapplePointTracker.transform.parent = hit.collider.transform;
+
             _grapplePoint = hit.point;
             _runtimeData.playerIsGrappling = true;
             _runtimeData.playerGrapplePoint = _grapplePoint;
