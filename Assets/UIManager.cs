@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _levelTimerTMP;
     [SerializeField] TextMeshProUGUI _artistNameTMP;
     [SerializeField] TextMeshProUGUI _songNameTMP;
+    [SerializeField] TextMeshProUGUI _levelCompletedTMP;
     [SerializeField] Image _crosshair;
     [SerializeField] Color _canGrappleColor;
     [SerializeField] Color _cannotGrappleColor;
@@ -31,14 +32,14 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        SceneManager.sceneLoaded += ResetLevelTimer;
+        SceneManager.sceneLoaded += OnSceneLoaded;
         GameEvents.LevelCompleted += LevelCompleted;
         GameEvents.SongStarted += DisplaySongInformation;
     }
 
     void OnDestroy()
     {
-        SceneManager.sceneLoaded -= ResetLevelTimer;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         GameEvents.LevelCompleted -= LevelCompleted;
         GameEvents.SongStarted -= DisplaySongInformation;
     }
@@ -61,7 +62,26 @@ public class UIManager : MonoBehaviour
         _levelTimerTMP.text = _levelTimer.ToString("F2");
     }
 
-    void ResetLevelTimer(Scene scene, LoadSceneMode mode)
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ResetLevelTimer();
+
+        //These are to keep Song text on main menu but hide everything else (and to click through them)
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            _crosshair.enabled = false;
+            _levelTimerTMP.enabled = false;
+            _levelCompletedTMP.enabled = false;
+        }
+        else 
+        {
+            _crosshair.enabled = true;
+            _levelTimerTMP.enabled = true;
+            _levelCompletedTMP.enabled = true;
+        }
+    }
+
+    void ResetLevelTimer()
     {
         _levelTimer = 0;
         _isLevelCompleted = false;
@@ -97,8 +117,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //Shows the artist and song name on screen after a new song is played
     void DisplaySongInformation(object sender, EventArgs args)
     {
+        //TODO
+        //TricksnTraps is hard coded right now, probably need a scritpable object for songs later
         _artistNameTMP.text = "TricksnTraps";
         _songNameTMP.text = _runtimeData.songName.Substring(0, _runtimeData.songName.IndexOf("("));
         _artistNameTMP.alpha = 255;
@@ -107,9 +130,10 @@ public class UIManager : MonoBehaviour
         StartCoroutine(SongInformationAlpha());
     }
 
+    //Fades the artist name and song name after a few seconds
     IEnumerator SongInformationAlpha()
     {
-        yield return new WaitForSeconds(2f * Time.timeScale);
+        yield return new WaitForSeconds(3f * Time.timeScale);
 
         _artistNameTMP.CrossFadeAlpha(0, 3, true);
         _songNameTMP.CrossFadeAlpha(0, 3, true);
