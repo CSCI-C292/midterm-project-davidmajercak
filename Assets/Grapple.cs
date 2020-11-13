@@ -16,7 +16,6 @@ public class Grapple : MonoBehaviour
     [SerializeField] Transform _grappleStartPoint;
     [SerializeField] GameObject _player;
     [SerializeField] int _linePositionCount;
-    Vector3 _grapplePoint;
     [SerializeField] Camera _cam;
     SpringJoint _joint;
     [SerializeField] RuntimeData _runtimeData;
@@ -48,7 +47,9 @@ public class Grapple : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_GrapplePointTracker.transform.position);
+        _runtimeData.playerGrapplePoint = _GrapplePointTracker.transform.position;
+        if(_runtimeData.playerIsGrappling)
+            _joint.connectedAnchor = _GrapplePointTracker.transform.position;
         SetCanGrapple();
 
 
@@ -67,17 +68,17 @@ public class Grapple : MonoBehaviour
             if(_reachedMinDistance)
                 return;
             //Maybe set player damper to a lower value while grappling to allow momentum to be transferred more easily?
-            if((_lastDistanceFromPoint < Vector3.Distance(_player.transform.position, _grapplePoint)) && 
-                (_initialDistanceFromPoint * _AbsMinDistanceMultiplier >= Vector3.Distance(_player.transform.position, _grapplePoint)))
+            if((_lastDistanceFromPoint < Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position)) && 
+                (_initialDistanceFromPoint * _AbsMinDistanceMultiplier >= Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position)))
             {
                 _joint.damper = Mathf.Infinity;
                 _reachedMinDistance = true;
             }
             //If we're closer to the grapple point than we were when we started the grapple
-            else if(_distanceFromPoint > Vector3.Distance(_player.transform.position, _grapplePoint))
+            else if(_distanceFromPoint > Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position))
             {
                 //Update the maxDistance so that our SpringJoint doesn't let us get as far away again, allowing tighter grapples around objects
-                _distanceFromPoint = Vector3.Distance(_player.transform.position, _grapplePoint);
+                _distanceFromPoint = Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position);
                 _joint.maxDistance = _distanceFromPoint * _jointMaxDistanceMultiplier;
                 _joint.minDistance = _distanceFromPoint * _jointMinDistanceMultiplier;
             }
@@ -100,15 +101,14 @@ public class Grapple : MonoBehaviour
             _GrapplePointTracker = Instantiate(_GrapplePointTracker, hit.point, Quaternion.identity);
             _GrapplePointTracker.transform.parent = hit.collider.transform;
 
-            _grapplePoint = hit.point;
             _runtimeData.playerIsGrappling = true;
-            _runtimeData.playerGrapplePoint = _grapplePoint;
+            _runtimeData.playerGrapplePoint = _GrapplePointTracker.transform.position;
 
             _joint = _player.AddComponent<SpringJoint>();
             _joint.autoConfigureConnectedAnchor = false;
-            _joint.connectedAnchor = _grapplePoint;
+            _joint.connectedAnchor = _GrapplePointTracker.transform.position;
 
-            _distanceFromPoint = Vector3.Distance(_player.transform.position, _grapplePoint);
+            _distanceFromPoint = Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position);
             _initialDistanceFromPoint = _distanceFromPoint;
             _lastDistanceFromPoint = _distanceFromPoint;
             
@@ -131,7 +131,7 @@ public class Grapple : MonoBehaviour
         if(!_joint)
             return;
         _line.SetPosition(0, _grappleStartPoint.position);
-        _line.SetPosition(1, _grapplePoint);
+        _line.SetPosition(1, _GrapplePointTracker.transform.position);
 
     }
 

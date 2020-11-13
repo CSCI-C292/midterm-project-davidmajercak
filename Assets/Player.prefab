@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grappleDistance: 110
   _jointMaxDistanceMultiplier: 0.5
-  _jointMinDistanceMultiplier: 0.25
+  _jointMinDistanceMultiplier: 0.1
   _jointSpring: 2
   _jointDamper: 0.05
   _jointMassScale: 4
