@@ -65,24 +65,23 @@ public class Grapple : MonoBehaviour
         }
         else if(_runtimeData.playerIsGrappling)
         {
-            if(_reachedMinDistance)
-                return;
-            //Maybe set player damper to a lower value while grappling to allow momentum to be transferred more easily?
-            if((_lastDistanceFromPoint < Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position)) && 
-                (_initialDistanceFromPoint * _AbsMinDistanceMultiplier >= Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position)))
+            if(Input.GetMouseButton(1))
             {
-                _joint.damper = Mathf.Infinity;
-                _reachedMinDistance = true;
-                StartCoroutine(DamperInfinityTimer());
+                if ((_lastDistanceFromPoint < Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position)) &&
+                    (_initialDistanceFromPoint * _AbsMinDistanceMultiplier >= Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position)))
+                {
+                    SetGrappleDamperInfinity();
+                }
             }
-            //If we're closer to the grapple point than we were when we started the grapple
-            else if(_distanceFromPoint > Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position))
+            else if(Input.GetMouseButtonUp(1))
             {
-                //Update the maxDistance so that our SpringJoint doesn't let us get as far away again, allowing tighter grapples around objects
-                _distanceFromPoint = Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position);
-                _joint.maxDistance = _distanceFromPoint * _jointMaxDistanceMultiplier;
-                _joint.minDistance = _distanceFromPoint * _jointMinDistanceMultiplier;
+                SetGrappleDamperDefault();
             }
+
+            _distanceFromPoint = Vector3.Distance(_player.transform.position, _GrapplePointTracker.transform.position);
+            _joint.maxDistance = _distanceFromPoint * _jointMaxDistanceMultiplier;
+            _joint.minDistance = _distanceFromPoint * _jointMinDistanceMultiplier;
+
             _lastDistanceFromPoint = _distanceFromPoint;
         }
     }
@@ -159,14 +158,19 @@ public class Grapple : MonoBehaviour
         _runtimeData.canGrapple = canGrapple;
     }
 
-    IEnumerator DamperInfinityTimer()
+    void SetGrappleDamperInfinity()
     {
-        yield return new WaitForSeconds(.3f * Time.timeScale);
-
         if(_joint)
         {
+            _joint.damper = Mathf.Infinity;
+        }
+    }
+
+    void SetGrappleDamperDefault()
+    {
+        if (_joint)
+        {
             _joint.damper = _jointDamper;
-            _reachedMinDistance = false;
         }
     }
 }
