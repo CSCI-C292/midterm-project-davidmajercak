@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Color _canGrappleColor;
     [SerializeField] Color _cannotGrappleColor;
     float _levelTimer;
+    float _pauseLevelTimer;
     bool _isLevelCompleted;
     [SerializeField] RuntimeData _runtimeData;
 
@@ -35,6 +36,7 @@ public class UIManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         GameEvents.LevelCompleted += LevelCompleted;
         GameEvents.SongStarted += DisplaySongInformation;
+        GameEvents.GatheredCollectible += OnGatheredCollectible;
     }
 
     void OnDestroy()
@@ -42,6 +44,7 @@ public class UIManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
         GameEvents.LevelCompleted -= LevelCompleted;
         GameEvents.SongStarted -= DisplaySongInformation;
+        GameEvents.GatheredCollectible -= OnGatheredCollectible;
     }
 
     void Start()
@@ -49,6 +52,7 @@ public class UIManager : MonoBehaviour
         _isLevelCompleted = false;
         _crosshair = _crosshair.GetComponent<Image>();
         _levelTimer = 0;
+        _pauseLevelTimer = 0;
     }
 
 
@@ -58,7 +62,13 @@ public class UIManager : MonoBehaviour
 
         //Only increment level time if level is not completed
         if(!_isLevelCompleted)
-            _levelTimer += Time.deltaTime;
+        {
+            if(_pauseLevelTimer >= 0)
+                _pauseLevelTimer -= Time.deltaTime;
+            else
+                _levelTimer += Time.deltaTime;
+        }
+
         _levelTimerTMP.text = _levelTimer.ToString("F2");
     }
 
@@ -146,5 +156,11 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(3.1f * Time.timeScale);
         _artistNameTMP.enabled = false;
         _songNameTMP.enabled = false;
+    }
+
+    void OnGatheredCollectible(object sender, CollectibleEventArgs args)
+    {
+        _pauseLevelTimer += args.collectiblePayload;
+        Debug.Log(_pauseLevelTimer);
     }
 }
