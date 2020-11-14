@@ -401,6 +401,8 @@ MonoBehaviour:
   _linePositionCount: 2
   _cam: {fileID: 7901811471661356320}
   _runtimeData: {fileID: 11400000, guid: bf458f0b775ca3648bfde24f876adaec, type: 2}
+  _gunMaterialDefault: {fileID: 2100000, guid: 19d457a81c07b0a4fa0a0fefa3e37363, type: 2}
+  _gunMaterialLocked: {fileID: 2100000, guid: 703912a048ed1824693ef445673d7c34, type: 2}
   _grappleMaterialDefault: {fileID: 2100000, guid: 7961d3e426e9d3444971f692bdf6e563,
     type: 2}
   _grappleMaterialLocked: {fileID: 2100000, guid: 5852af26d733ab547b5783778401e1cd,
