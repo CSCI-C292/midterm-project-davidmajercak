@@ -401,7 +401,10 @@ MonoBehaviour:
   _linePositionCount: 2
   _cam: {fileID: 7901811471661356320}
   _runtimeData: {fileID: 11400000, guid: bf458f0b775ca3648bfde24f876adaec, type: 2}
-  _AbsMinDistanceMultiplier: 0.8
+  _grappleMaterialDefault: {fileID: 2100000, guid: 7961d3e426e9d3444971f692bdf6e563,
+    type: 2}
+  _grappleMaterialLocked: {fileID: 2100000, guid: 5852af26d733ab547b5783778401e1cd,
+    type: 2}
 --- !u!114 &1243043002288886468
 MonoBehaviour:
   m_ObjectHideFlags: 0

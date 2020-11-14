@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     bool _isGrounded;
     [SerializeField] float _groundDistance = default;
     [SerializeField] RuntimeData _runtimeData;
-    [SerializeField] float _grappleMovementMultiplier;
+    [SerializeField] float _grappleMovementMultiplier;    
 
     void Start()
     {

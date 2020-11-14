@@ -172,6 +172,5 @@ public class UIManager : MonoBehaviour
     void OnGatheredCollectible(object sender, CollectibleEventArgs args)
     {
         _pauseLevelTimer += args.collectiblePayload;
-        Debug.Log(_pauseLevelTimer);
     }
 }

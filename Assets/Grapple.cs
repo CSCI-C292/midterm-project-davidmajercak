@@ -25,7 +25,10 @@ public class Grapple : MonoBehaviour
     GameObject _GrapplePointTracker;
 
     LineTextureMode _textureMode = LineTextureMode.Stretch;
+
     bool canGrapple;
+    [SerializeField] Material _grappleMaterialDefault;
+    [SerializeField] Material _grappleMaterialLocked;
 
     void Awake()
     {
@@ -93,6 +96,9 @@ public class Grapple : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, _grappleDistance, _Grappleable))
         {
+            //Reset Grapple material 
+            _line.material = _grappleMaterialDefault;
+
             _GrapplePointTracker = Instantiate(_GrapplePointTracker, hit.point, Quaternion.identity);
             _GrapplePointTracker.transform.parent = hit.collider.transform;
 
@@ -157,6 +163,7 @@ public class Grapple : MonoBehaviour
         if(_joint)
         {
             _joint.damper = Mathf.Infinity;
+            _line.material = _grappleMaterialLocked;
         }
     }
 
@@ -165,6 +172,7 @@ public class Grapple : MonoBehaviour
         if (_joint)
         {
             _joint.damper = _jointDamper;
+            _line.material = _grappleMaterialDefault;
         }
     }
 }
