@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Color _cannotGrappleColor;
     float _levelTimer;
     float _pauseLevelTimer;
+    Color _defaultLevelTimerColor;
+    [SerializeField] Color _pausedLevelTimerColor;
     bool _isLevelCompleted;
     [SerializeField] RuntimeData _runtimeData;
 
@@ -53,6 +55,8 @@ public class UIManager : MonoBehaviour
         _crosshair = _crosshair.GetComponent<Image>();
         _levelTimer = 0;
         _pauseLevelTimer = 0;
+        
+        _defaultLevelTimerColor = _levelTimerTMP.color;
     }
 
 
@@ -63,10 +67,16 @@ public class UIManager : MonoBehaviour
         //Only increment level time if level is not completed
         if(!_isLevelCompleted)
         {
-            if(_pauseLevelTimer >= 0)
+            if(_pauseLevelTimer > 0)
+            {
                 _pauseLevelTimer -= Time.deltaTime;
+                _levelTimerTMP.color = _pausedLevelTimerColor;
+            }
             else
+            {
                 _levelTimer += Time.deltaTime;
+                _levelTimerTMP.color = _defaultLevelTimerColor;
+            }
         }
 
         _levelTimerTMP.text = _levelTimer.ToString("F2");
@@ -76,6 +86,7 @@ public class UIManager : MonoBehaviour
     {
         ResetLevelTimer();
 
+        _pauseLevelTimer = 0;
         _levelCompletedTMP.text = "";
 
         //These are to keep Song text on main menu but hide everything else (and to click through them)

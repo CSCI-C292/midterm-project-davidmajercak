@@ -119,6 +119,7 @@ MonoBehaviour:
   _crosshair: {fileID: 576333882075871791}
   _canGrappleColor: {r: 1, g: 0, b: 0.8187933, a: 1}
   _cannotGrappleColor: {r: 0.31633854, g: 0, b: 1, a: 1}
+  _pausedLevelTimerColor: {r: 0, g: 0.9607844, b: 0.92549026, a: 1}
   _runtimeData: {fileID: 11400000, guid: bf458f0b775ca3648bfde24f876adaec, type: 2}
 --- !u!1001 &4840134847291766774
 PrefabInstance:
