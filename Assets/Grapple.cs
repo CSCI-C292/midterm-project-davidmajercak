@@ -100,10 +100,6 @@ public class Grapple : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, _grappleDistance, _Grappleable))
         {
-            //Reset Grapple material and Gun material
-            _line.material = _grappleMaterialDefault;
-            _gunRenderer.material = _gunMaterialDefault;
-
             _GrapplePointTracker = Instantiate(_GrapplePointTracker, hit.point, Quaternion.identity);
             _GrapplePointTracker.transform.parent = hit.collider.transform;
 
@@ -146,6 +142,7 @@ public class Grapple : MonoBehaviour
         _runtimeData.playerIsGrappling = false;
         _line.positionCount = 0;
         Destroy(_joint);
+        SetGrappleGunMaterialDefault();
     }
 
     void SetCanGrapple()
@@ -168,8 +165,7 @@ public class Grapple : MonoBehaviour
         if(_joint)
         {
             _joint.damper = Mathf.Infinity;
-            _line.material = _grappleMaterialLocked;
-            _gunRenderer.material = _gunMaterialLocked;
+            SetGrappleGunMaterialLocked();
         }
     }
 
@@ -178,8 +174,19 @@ public class Grapple : MonoBehaviour
         if (_joint)
         {
             _joint.damper = _jointDamper;
-            _line.material = _grappleMaterialDefault;
-            _gunRenderer.material = _gunMaterialDefault;
+            SetGrappleGunMaterialDefault();
         }
+    }
+
+    void SetGrappleGunMaterialDefault()
+    {
+        _line.material = _grappleMaterialDefault;
+        _gunRenderer.material = _gunMaterialDefault;
+    }
+
+    void SetGrappleGunMaterialLocked()
+    {
+        _line.material = _grappleMaterialLocked;
+        _gunRenderer.material = _gunMaterialLocked;
     }
 }
