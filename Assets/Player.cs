@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
 
         _rb = GetComponent<Rigidbody>();
         _rb.maxAngularVelocity = 0;
+        _runtimeData.playerVelocity = 0;
 
         //This fixes the bugs that were driving me crazy!
         //Needed to set center of mass of the rigid body otherwise grappling slightly rotates the player
@@ -70,9 +71,7 @@ public class Player : MonoBehaviour
                 _rb.AddForce(_jumpVector, ForceMode.VelocityChange);
             }
 
-            //The "speed" of the player.  Maybe show this somewhere on screen?
-            //Debug.Log(_rb.velocity.magnitude);
-
+            _runtimeData.playerVelocity = _rb.velocity.magnitude;
 
             _rb.inertiaTensorRotation = Quaternion.identity;
         }

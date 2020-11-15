@@ -12,4 +12,5 @@ public class RuntimeData : ScriptableObject
     public bool canGrapple;
     public string songName;
     public GameplayState currentGameplayState;
+    public float playerVelocity;
 }
