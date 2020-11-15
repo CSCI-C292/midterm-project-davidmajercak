@@ -56,6 +56,9 @@ public class Grapple : MonoBehaviour
             _joint.connectedAnchor = _GrapplePointTracker.transform.position;
         SetCanGrapple();
 
+        if (_runtimeData.currentGameplayState == GameplayState.Countdown)
+            return;
+
 
         //This if statement allows player to grapple an object even if mouse is down before they mouse over an object
         //This makes it so grappling is less dependent on twitch reflexes

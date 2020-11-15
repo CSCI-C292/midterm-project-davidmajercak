@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameState : MonoBehaviour
 {
@@ -18,7 +19,12 @@ public class GameState : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        SceneManager.sceneLoaded += CalculateLevelBounds;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void Update()
@@ -36,9 +42,28 @@ public class GameState : MonoBehaviour
         }
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Countdown();
+        CalculateLevelBounds();
+    }
+
+    void Countdown()
+    {
+        _runtimeData.currentGameplayState = GameplayState.Countdown;
+
+        StartCoroutine(EndCountdown());
+    }
+
+    IEnumerator EndCountdown()
+    {
+        yield return new WaitForSeconds(3f);
+        _runtimeData.currentGameplayState = GameplayState.FreeMove;
+    }
+
     //Checks the x, y, and z positions of every object in the scene to determine where the level bounds are
     //  This way we can auto-reload the scene if the player goes too far out of bounds
-    void CalculateLevelBounds(Scene scene, LoadSceneMode mode)
+    void CalculateLevelBounds()
     {
         _lowestObjecty = Mathf.Infinity;
         _highestObjecty = -Mathf.Infinity;

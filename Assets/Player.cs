@@ -46,6 +46,10 @@ public class Player : MonoBehaviour
 
         _rb = GetComponent<Rigidbody>();
         _rb.maxAngularVelocity = 0;
+
+        //This fixes the bugs that were driving me crazy!
+        //Needed to set center of mass of the rigid body otherwise grappling slightly rotates the player
+        _rb.centerOfMass = Vector3.zero;
     }
     void Update()
     {
@@ -54,22 +58,26 @@ public class Player : MonoBehaviour
         _isGrounded = Physics.CheckSphere(gameObject.transform.position, _groundDistance, _groundLayerMask, QueryTriggerInteraction.Ignore);
 
         AimCamera();
-        CalculateMovementVector();
 
-        //Jump
-        if(_isGrounded && Input.GetButtonDown("Jump"))
+        if(_runtimeData.currentGameplayState == GameplayState.FreeMove)
         {
-            Vector3 _jumpVector = Vector3.up * _jumpHeight;
-            _rb.AddForce(_jumpVector, ForceMode.VelocityChange);
+            CalculateMovementVector();
+
+            //Jump
+            if (_isGrounded && Input.GetButtonDown("Jump"))
+            {
+                Vector3 _jumpVector = Vector3.up * _jumpHeight;
+                _rb.AddForce(_jumpVector, ForceMode.VelocityChange);
+            }
+
+            //The "speed" of the player.  Maybe show this somewhere on screen?
+            //Debug.Log(_rb.velocity.magnitude);
+
+
+            _rb.inertiaTensorRotation = Quaternion.identity;
         }
 
-        //The "speed" of the player.  Maybe show this somewhere on screen?
-        //Debug.Log(_rb.velocity.magnitude);
-
-        //This fixes the bugs that were driving me crazy!
-        //Needed to set center of mass of the rigid body otherwise grappling slightly rotates the player
-        _rb.centerOfMass = Vector3.zero;
-        _rb.inertiaTensorRotation = Quaternion.identity;
+        
 
         //Set player position in _runtimeData
         _runtimeData.playerPosition = gameObject.transform.position;

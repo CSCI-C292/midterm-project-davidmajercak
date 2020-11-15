@@ -11,4 +11,5 @@ public class RuntimeData : ScriptableObject
     public Vector3 playerPosition;
     public bool canGrapple;
     public string songName;
+    public GameplayState currentGameplayState;
 }
