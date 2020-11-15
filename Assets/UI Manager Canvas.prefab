@@ -116,6 +116,7 @@ MonoBehaviour:
   _artistNameTMP: {fileID: 8209922590396821757}
   _songNameTMP: {fileID: 3126916723096473896}
   _levelCompletedTMP: {fileID: 5008751604819605652}
+  _countdownTMP: {fileID: 8280424080258666281}
   _crosshair: {fileID: 576333882075871791}
   _canGrappleColor: {r: 1, g: 0, b: 0.8187933, a: 1}
   _cannotGrappleColor: {r: 0.31633854, g: 0, b: 1, a: 1}
@@ -357,6 +358,18 @@ MonoBehaviour:
 --- !u!114 &8209922590396821757 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3658081674498803467, guid: 126ee21071501154d99ce4b4cfe98eba,
+    type: 3}
+  m_PrefabInstance: {fileID: 4840134847291766774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8280424080258666281 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3585539490992109791, guid: 126ee21071501154d99ce4b4cfe98eba,
     type: 3}
   m_PrefabInstance: {fileID: 4840134847291766774}
   m_PrefabAsset: {fileID: 0}

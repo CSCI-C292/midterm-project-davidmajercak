@@ -13,10 +13,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _artistNameTMP;
     [SerializeField] TextMeshProUGUI _songNameTMP;
     [SerializeField] TextMeshProUGUI _levelCompletedTMP;
+    [SerializeField] TextMeshProUGUI _countdownTMP;
     [SerializeField] Image _crosshair;
     [SerializeField] Color _canGrappleColor;
     [SerializeField] Color _cannotGrappleColor;
     float _levelTimer;
+    float _countdownTimer;
     float _pauseLevelTimer;
     Color _defaultLevelTimerColor;
     [SerializeField] Color _pausedLevelTimerColor;
@@ -55,6 +57,7 @@ public class UIManager : MonoBehaviour
         _crosshair = _crosshair.GetComponent<Image>();
         _levelTimer = 0;
         _pauseLevelTimer = 0;
+        _countdownTimer = 3;
         
         _defaultLevelTimerColor = _levelTimerTMP.color;
     }
@@ -67,15 +70,29 @@ public class UIManager : MonoBehaviour
         //Only increment level time if level is not completed
         if(!_isLevelCompleted)
         {
-            if(_pauseLevelTimer > 0)
+            if(_runtimeData.currentGameplayState == GameplayState.Countdown)
             {
-                _pauseLevelTimer -= Time.deltaTime;
-                _levelTimerTMP.color = _pausedLevelTimerColor;
+                _countdownTimer -= Time.deltaTime;
+                
+                if(_countdownTimer <= 0)
+                    _countdownTMP.enabled = false;
+
+                _countdownTMP.text = _countdownTimer.ToString("F2");
             }
             else
             {
-                _levelTimer += Time.deltaTime;
-                _levelTimerTMP.color = _defaultLevelTimerColor;
+                _countdownTMP.enabled = false;
+
+                if (_pauseLevelTimer > 0)
+                {
+                    _pauseLevelTimer -= Time.deltaTime;
+                    _levelTimerTMP.color = _pausedLevelTimerColor;
+                }
+                else
+                {
+                    _levelTimer += Time.deltaTime;
+                    _levelTimerTMP.color = _defaultLevelTimerColor;
+                }
             }
         }
 
@@ -86,6 +103,7 @@ public class UIManager : MonoBehaviour
     {
         ResetLevelTimer();
 
+        _countdownTimer = 3;
         _pauseLevelTimer = 0;
         _levelCompletedTMP.text = "";
 
@@ -95,12 +113,14 @@ public class UIManager : MonoBehaviour
             _crosshair.enabled = false;
             _levelTimerTMP.enabled = false;
             _levelCompletedTMP.enabled = false;
+            _countdownTMP.enabled = false;
         }
         else 
         {
             _crosshair.enabled = true;
             _levelTimerTMP.enabled = true;
             _levelCompletedTMP.enabled = true;
+            _countdownTMP.enabled = true;
         }
     }
 
