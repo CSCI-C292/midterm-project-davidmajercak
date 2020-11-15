@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     float _levelTimer;
     float _countdownTimer;
     float _pauseLevelTimer;
-    Color _defaultLevelTimerColor;
+    [SerializeField] Color _defaultLevelTimerColor;
     [SerializeField] Color _pausedLevelTimerColor;
     bool _isLevelCompleted;
     [SerializeField] RuntimeData _runtimeData;
@@ -58,8 +58,6 @@ public class UIManager : MonoBehaviour
         _levelTimer = 0;
         _pauseLevelTimer = 0;
         _countdownTimer = 3;
-        
-        _defaultLevelTimerColor = _levelTimerTMP.color;
     }
 
 
@@ -106,6 +104,8 @@ public class UIManager : MonoBehaviour
         _countdownTimer = 3;
         _pauseLevelTimer = 0;
         _levelCompletedTMP.text = "";
+        _levelTimerTMP.color = _defaultLevelTimerColor;
+        _levelTimerTMP.alpha = 255;
 
         //These are to keep Song text on main menu but hide everything else (and to click through them)
         if(SceneManager.GetActiveScene().buildIndex == 0)
