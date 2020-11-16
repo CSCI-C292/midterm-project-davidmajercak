@@ -3950,12 +3950,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Controls  - Move mouse to aim camera\nLeft click and hold to start grappling\nRelease
-    left click to stop grappling\nWASD to move \nSpace to jump (when on ground)\nR
-    to reset the level\n\nGoal - Reach the blue portal to go to the next level!\n\nTips
-    - You can move with WASD even when grappling,\n\tthis will help you to grapple
-    around objects.\nYou can hold down Left Mouse Button and you will start grappling
-    when something gets into range!\nYour grapple range is not infinite! You need
-    to be within range.\nYou can build up momentum by grappling consecutively!"
+    left click to stop grappling\nRight click while grappling to lock your grapple
+    to make tighter turns\nWASD to move \nSpace to jump (when on ground)\nR to reset
+    the level\n\nGoal - Reach the blue portal to go to the next level!\nGrab the
+    red collectibles to stop your timer for a few seconds!\n\nTips - You can move
+    with WASD even when grappling,\n\tthis will help you to grapple around objects.\nYou
+    can hold down Left Mouse Button and you will start grappling when something gets
+    into range!\nYour grapple range is not infinite! You need to be within range.\nYou
+    can build up momentum by grappling consecutively!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
