@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 5 - Rocket Man.unity
     guid: c85c5b537aa78c841a980b309f6eaf3f
   - enabled: 1
-    path: Assets/Scenes/Level 6 - Helicopter.unity
+    path: Assets/Scenes/Level 6 - The Tower.unity
     guid: 8c37d3e6a1fd4334bad87f45fa2f2f1a
   m_configObjects: {}
