@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 6 - The Tower.unity
     guid: 8c37d3e6a1fd4334bad87f45fa2f2f1a
+  - enabled: 1
+    path: Assets/Scenes/Level 10 - Doom Cube.unity
+    guid: 684d720c97dfdfc41aff82e6fa6f5a20
   m_configObjects: {}
