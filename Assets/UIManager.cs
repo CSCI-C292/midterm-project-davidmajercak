@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _levelCompletedTMP;
     [SerializeField] TextMeshProUGUI _countdownTMP;
     [SerializeField] TextMeshProUGUI _playerVelocityTMP;
+    [SerializeField] TextMeshProUGUI _levelNameTMP;
     [SerializeField] Image _crosshair;
     [SerializeField] Color _canGrappleColor;
     [SerializeField] Color _cannotGrappleColor;
@@ -112,6 +113,7 @@ public class UIManager : MonoBehaviour
         _levelCompletedTMP.text = "";
         _levelTimerTMP.color = _defaultLevelTimerColor;
         _levelTimerTMP.alpha = 255;
+        _levelNameTMP.text = SceneManager.GetActiveScene().name.Substring(SceneManager.GetActiveScene().name.IndexOf("-") + 1);
         
 
         //These are to keep Song text on main menu but hide everything else (and to click through them)
@@ -122,6 +124,7 @@ public class UIManager : MonoBehaviour
             _levelCompletedTMP.enabled = false;
             _countdownTMP.enabled = false;
             _playerVelocityTMP.enabled = false;
+            _levelNameTMP.enabled = false;
         }
         else 
         {
@@ -130,6 +133,7 @@ public class UIManager : MonoBehaviour
             _levelCompletedTMP.enabled = true;
             _countdownTMP.enabled = true;
             _playerVelocityTMP.enabled = true;
+            _levelNameTMP.enabled = true;
         }
     }
 

@@ -118,6 +118,7 @@ MonoBehaviour:
   _levelCompletedTMP: {fileID: 5008751604819605652}
   _countdownTMP: {fileID: 8280424080258666281}
   _playerVelocityTMP: {fileID: 3789896050339226508}
+  _levelNameTMP: {fileID: 6310748927515365346}
   _crosshair: {fileID: 576333882075871791}
   _canGrappleColor: {r: 1, g: 0, b: 0.8187933, a: 1}
   _cannotGrappleColor: {r: 0.31633854, g: 0, b: 1, a: 1}
@@ -174,7 +175,7 @@ PrefabInstance:
     - target: {fileID: 5324350928873325849, guid: 126ee21071501154d99ce4b4cfe98eba,
         type: 3}
       propertyPath: m_AspectRatio
-      value: 1.7819386
+      value: 1.7812433
       objectReference: {fileID: 0}
     - target: {fileID: 5324350928873325926, guid: 126ee21071501154d99ce4b4cfe98eba,
         type: 3}
@@ -384,6 +385,18 @@ MonoBehaviour:
 --- !u!114 &3789896050339226508 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8625508874472952954, guid: 126ee21071501154d99ce4b4cfe98eba,
+    type: 3}
+  m_PrefabInstance: {fileID: 4840134847291766774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6310748927515365346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1495147013034719252, guid: 126ee21071501154d99ce4b4cfe98eba,
     type: 3}
   m_PrefabInstance: {fileID: 4840134847291766774}
   m_PrefabAsset: {fileID: 0}
