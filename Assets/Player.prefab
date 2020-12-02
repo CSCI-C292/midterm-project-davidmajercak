@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3836e99b67f22da4086baddc8f75c3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensitivity: 3
+  _lookSensitivity: 3
   _cam: {fileID: 7901811471661356322}
   _groundLayerMask:
     serializedVersion: 2

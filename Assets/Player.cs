@@ -25,7 +25,7 @@ using UnityEngine;
 //I decided it would be easier to implement this way since the player will primarily move with a grappling hook
 public class Player : MonoBehaviour
 {
-    [SerializeField] float _mouseSensitivity = default;
+    [SerializeField] public float _lookSensitivity = default;
     [SerializeField] GameObject _cam = default;
     [SerializeField] LayerMask _groundLayerMask = default;
     [SerializeField] float _movementSpeed = default;
@@ -94,9 +94,9 @@ public class Player : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 
-        transform.Rotate(Vector3.up, mouseX * _mouseSensitivity);
+        transform.Rotate(Vector3.up, mouseX * _lookSensitivity);
 
-        _currentTilt -= mouseY * _mouseSensitivity;
+        _currentTilt -= mouseY * _lookSensitivity;
         _currentTilt = Mathf.Clamp(_currentTilt, -90, 90);
 
         _cam.transform.localEulerAngles = new Vector3(_currentTilt, 0, 0);
