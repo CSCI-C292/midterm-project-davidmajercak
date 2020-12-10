@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _countdownTMP;
     [SerializeField] TextMeshProUGUI _playerVelocityTMP;
     [SerializeField] TextMeshProUGUI _levelNameTMP;
+    [SerializeField] public TextMeshProUGUI _previousBestTMP;
     [SerializeField] Image _crosshair;
     [SerializeField] Color _canGrappleColor;
     [SerializeField] Color _cannotGrappleColor;
@@ -83,7 +84,9 @@ public class UIManager : MonoBehaviour
             }
             else
             {
+                //Disable countdown timer and previous best message
                 _countdownTMP.enabled = false;
+                _previousBestTMP.enabled = false;
                 
 
                 if (_pauseLevelTimer > 0)
@@ -125,6 +128,7 @@ public class UIManager : MonoBehaviour
             _countdownTMP.enabled = false;
             _playerVelocityTMP.enabled = false;
             _levelNameTMP.enabled = false;
+            _previousBestTMP.enabled = false;
         }
         else 
         {
@@ -134,9 +138,22 @@ public class UIManager : MonoBehaviour
             _countdownTMP.enabled = true;
             _playerVelocityTMP.enabled = true;
             _levelNameTMP.enabled = true;
+
+            if(CheckIfPreviousBestExists())
+            {
+                _previousBestTMP.enabled = true;
+            }
+            else
+            {
+                _previousBestTMP.enabled = false;
+            }
         }
     }
 
+    public Boolean CheckIfPreviousBestExists()
+    {
+        return PlayerPrefs.HasKey(SceneManager.GetActiveScene().name);
+    }
     void ResetLevelTimer()
     {
         _levelTimer = 0;
@@ -145,9 +162,17 @@ public class UIManager : MonoBehaviour
 
     void LevelCompleted(object sender, EventArgs args)
     {
+        SendInfoToSaveManager();
+
         _isLevelCompleted = true;
 
         StartCoroutine(FlashLevelTimerText());
+    }
+
+    void SendInfoToSaveManager()
+    {
+        _runtimeData.levelTimer = _levelTimer;
+        GameEvents.InvokeSaveData();
     }
 
     IEnumerator FlashLevelTimerText()

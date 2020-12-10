@@ -13,4 +13,5 @@ public class RuntimeData : ScriptableObject
     public string songName;
     public GameplayState currentGameplayState;
     public float playerVelocity;
+    public float levelTimer;
 }

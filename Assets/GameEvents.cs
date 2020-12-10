@@ -12,6 +12,7 @@ public static class GameEvents
 {
     public static event EventHandler LevelCompleted;
     public static event EventHandler SongStarted;
+    public static event EventHandler SaveData;
     public static event EventHandler<CollectibleEventArgs> GatheredCollectible;
     
 
@@ -23,6 +24,11 @@ public static class GameEvents
     public static void InvokeSongStarted()
     {
         SongStarted(null, EventArgs.Empty);
+    }
+
+    public static void InvokeSaveData()
+    {
+        SaveData(null, EventArgs.Empty);
     }
 
     public static void InvokeGatheredCollectible(float stopTimeAmount)
