@@ -3405,10 +3405,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "David Majercak\naka extraDavid\ndavidmajercak.com\nextradavid.com\n\nDavid
-    Majercak\n\nKenney.nl aka Asset Jesus\n\tSpace Kit\n\tPlatformer Kit\n\nTitle
-    - maxstack\n\tThrough Space\nIn Game - HorrorPen\n\tIt Is\n\nTitle Background
+    Majercak\n\nTricksnTraps - T & T Free Cyberpunk Pack 1 & 2\n\nTitle Background
     - Adrien Olichon\nSkybox - Pulsar Bytes\n\tSpaceSkies Free\t\nShaders - The Developer\n\tUltimate
-    10+ Shaders\n\nChabane Maidi\nBrackeys\nTeam Opal\nLya Mummert"
+    10+ Shaders\n\nLance Majercak\nMichael Shickora\nFrancesco Mancarelli\nLya Mummert\n\nChabane
+    Maidi\nBrackeys\nTeam Opal\nLya Mummert"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3974,35 +3974,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game Design
-
-
-
-
-
-    Lead Developer
-
-
-    Game Assets
-
-
-
-
-    Music
-
-
-
-
-
-    Other
-    Assets
-
-
-
-
-
-
-    Special Thanks'
+  m_text: "Game Design\n\n\n\n\nLead Developer\n\nMusic\n\n\nOther Assets\n\n\n\n\n\nTesters
+    \n\n\n\n\nSpecial Thanks"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
