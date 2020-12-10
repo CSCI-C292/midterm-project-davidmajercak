@@ -41,7 +41,6 @@ public class SaveManager : MonoBehaviour
         {
             //Save new best time for this level
             PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name, _runtimeData.levelTimer);
-            Debug.Log(_runtimeData.levelTimer);
         }
     }
 
